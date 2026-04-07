@@ -13,20 +13,29 @@ Extract from the user's message:
 - **Domain or advertiser** (required) — e.g. "densurefit.com", "nike.com", or a direct Google Ads Transparency URL
 - **Max videos** (optional) — if the user specifies a number, use it; otherwise default to 20
 
-## 2. Run the scraper
+## 2. Ask before running
+
+Before running the scraper, confirm these with the user:
+- **Output folder** — ask: "Where should I save the results? (default: `~/obsidian-vault/youtube-ads/`)"
+- **Video transcription** — ask: "Do you want video transcripts? (requires RAPIDAPI_KEY env var)"
+
+If the user says "just go" or doesn't specify, use the defaults (default folder, skip transcription if no env var set).
+
+## 3. Run the scraper
 
 Execute this command:
 
 ```bash
-python3 ~/.qwen/skills/youtube-ads-scraper/yt_ads_spy.py "<domain>" --max-videos <N>
+python3 ~/.qwen/skills/youtube-ads-scraper/yt_ads_spy.py "<domain>" --max-videos <N> --output-dir "<output_folder>"
 ```
 
 Replace `<domain>` with the parsed domain (keep original format).
 Replace `<N>` with the max videos count (default 20 if not specified).
+Replace `<output_folder>` with the user's chosen folder (default: `~/obsidian-vault/youtube-ads`).
 
 **Important:** This launches a visible Chromium browser window. It takes 3-10 minutes depending on the number of videos. Do NOT set a short timeout — use at least 600000ms (10 minutes).
 
-## 3. Report results
+## 4. Report results
 
 After the script finishes, tell the user:
 - How many YouTube videos were found
