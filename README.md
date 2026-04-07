@@ -1,116 +1,40 @@
-# Facebook Ads Spy — Claude Code Skill
+# Marketing Intelligence Agent
 
-Scrape any advertiser's Facebook ads from the Meta Ad Library. Downloads all ad creatives (images + videos), extracts landing URLs, ad copy, and optionally transcribes video ads — all saved as Obsidian-ready Markdown.
+Open-source marketing intelligence tools for AI coding assistants. Spy on competitors' ads across Facebook and YouTube — powered by browser automation.
 
-## What It Does
+Each folder is a self-contained tool with its own README, install instructions, and source files.
 
-- Opens the Meta Ad Library in a real browser (anti-detection via Patchright)
-- Searches for an advertiser and auto-scrolls to load all their ads
-- Extracts: ad copy, landing URLs, images, videos, CTAs, start dates, platforms
-- Downloads all media (images + videos) locally
-- Optionally transcribes video ad audio using Deepgram
-- Outputs everything as a clean Obsidian Markdown vault
+## Tools
 
-## Requirements
+| Tool | Description | Status |
+|------|-------------|--------|
+| [facebook-ads-spy](./facebook-ads-spy/) | Scrape any advertiser's Facebook ads — images, videos, ad copy, transcripts | Ready |
+| [youtube-ads-spy](./youtube-ads-spy/) | Find any brand's YouTube video ads — thumbnails, view counts, transcripts | Ready |
 
-- Python 3.8+
-- macOS, Linux, or Windows
-- Chrome/Chromium installed
-- **Optional:** ffmpeg (for video audio extraction) + Deepgram API key (for transcription)
+## How They Work
 
-## Installation
+Both tools use **Patchright** (anti-detection browser automation) to scrape public ad transparency platforms:
 
-### 1. Copy the tool
+- **Facebook Ads Spy** scrapes the [Meta Ad Library](https://www.facebook.com/ads/library/)
+- **YouTube Ads Spy** scrapes the [Google Ads Transparency Center](https://adstransparency.google.com/)
 
-```bash
-mkdir -p ~/.claude/skills/ads-spy
-cp fb_ads_spy.py ~/.claude/skills/ads-spy/fb_ads_spy.py
-```
+No API keys or logins required for basic scraping. Optional API keys unlock video transcription.
 
-### 2. Install dependencies
+## Quick Start
+
+Pick a tool, follow its README:
 
 ```bash
-pip3 install requests patchright
-python3 -m patchright install chromium
+# Facebook Ads
+cd facebook-ads-spy && cat README.md
+
+# YouTube Ads
+cd youtube-ads-spy && cat README.md
 ```
 
-### 3. (Optional) Enable video transcription
+## Works With
 
-Install ffmpeg:
-```bash
-# macOS
-brew install ffmpeg
-
-# Ubuntu/Debian
-sudo apt install ffmpeg
-```
-
-Get a free Deepgram API key from [deepgram.com](https://deepgram.com) and set it:
-```bash
-export DEEPGRAM_API_KEY="your-key-here"
-```
-
-Add the export to your `~/.zshrc` or `~/.bashrc` to make it permanent.
-
-### 4. Add the skill to Claude Code
-
-```bash
-mkdir -p ~/.claude/commands
-cp ads-spy.md ~/.claude/commands/ads-spy.md
-```
-
-### 5. Done
-
-Open Claude Code and type `/ads-spy` or just ask "spy on Nike's Facebook ads".
-
-## Standalone Usage (Without Claude Code)
-
-Works as a standalone CLI tool with any AI coding assistant or directly from terminal:
-
-```bash
-# Basic usage
-python3 ~/.claude/skills/ads-spy/fb_ads_spy.py "Nike"
-
-# Limit to 50 ads
-python3 ~/.claude/skills/ads-spy/fb_ads_spy.py "Nike" --max-ads 50
-
-# Custom output directory
-python3 ~/.claude/skills/ads-spy/fb_ads_spy.py "Nike" --output-dir ~/my-ads
-```
-
-## Output Structure
-
-```
-~/obsidian-vault/facebook-ads/
-└── nike/
-    ├── nike.md           ← Main Markdown file with all ads
-    ├── images/           ← Downloaded ad images
-    │   ├── ad-1-1.jpg
-    │   └── ad-2-1.jpg
-    ├── videos/           ← Downloaded ad videos
-    │   └── ad-3-1.mp4
-    └── audio/            ← Extracted audio + transcripts
-        └── ad-3-1.mp3
-```
-
-Open `~/obsidian-vault/facebook-ads/` as an Obsidian vault to browse everything with embedded images and videos.
-
-## Using with Other AI CLI Tools
-
-The Python script works standalone — you can use it with any AI assistant:
-
-**Gemini CLI / Qwen / other AI CLIs:**
-Just tell your AI: "Run `python3 path/to/fb_ads_spy.py "BrandName"` and report the results."
-
-**Direct terminal:**
-```bash
-python3 fb_ads_spy.py "Coca-Cola" --max-ads 100
-```
-
-## Tips
-
-- The scraper uses **Patchright** (anti-detection Playwright) to avoid Meta's bot detection
-- First run may take longer as it downloads Chromium
-- Video transcription requires both ffmpeg and a Deepgram API key — without them, ads still scrape fine, just no transcripts
-- The browser opens visibly so you can watch the scraping happen
-- If interrupted (Ctrl+C), partial results are still saved
+- **Claude Code** — install as a slash command (`/ads-spy`, `/youtube-ads-scraper`)
+- **Gemini CLI** — run the Python script directly
+- **Any AI CLI** — standalone Python scripts, no framework lock-in
+- **Terminal** — works without any AI assistant
