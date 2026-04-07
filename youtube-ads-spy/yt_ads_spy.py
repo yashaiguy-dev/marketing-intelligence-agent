@@ -5,7 +5,7 @@ Finds YouTube video ads for a domain/advertiser, extracts metadata + transcripts
 Outputs Obsidian-ready Markdown.
 
 Usage:
-    python3 yt_ads_spy.py "densurefit.com" [--max-videos 20] [--output-dir ~/obsidian-vault/youtube-ads]
+    python3 yt_ads_spy.py "nike.com" [--max-videos 20] [--output-dir ~/obsidian-vault/youtube-ads]
 
 Requirements:
     pip3 install requests patchright
@@ -648,7 +648,7 @@ def generate_markdown(videos: list, advertiser: str, brand_slug: str) -> str:
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Scrape Google Ads Transparency for YouTube video ads")
-    parser.add_argument("domain", help="Advertiser domain (e.g. densurefit.com) or direct Ads Transparency URL")
+    parser.add_argument("domain", help="Advertiser domain (e.g. nike.com) or direct Ads Transparency URL")
     parser.add_argument("--max-videos", type=int, default=20, help="Maximum videos to find (default: 20)")
     parser.add_argument("--output-dir", default=os.path.expanduser("~/obsidian-vault/youtube-ads"),
                         help="Output directory (default: ~/obsidian-vault/youtube-ads)")

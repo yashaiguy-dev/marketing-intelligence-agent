@@ -41,4 +41,4 @@ After the script finishes, tell the user:
 - Where the Markdown file was saved
 - Remind them they can open the folder as an Obsidian vault
 
-Example: "Found 47 ads for DenSureFit. Saved to `~/obsidian-vault/facebook-ads/densurefit/densurefit.md` with 52 images. You can open `~/obsidian-vault/facebook-ads/` as an Obsidian vault to browse them."
+Example: "Found 47 ads for Nike. Saved to `~/obsidian-vault/facebook-ads/nike/nike.md` with 52 images. You can open `~/obsidian-vault/facebook-ads/` as an Obsidian vault to browse them."

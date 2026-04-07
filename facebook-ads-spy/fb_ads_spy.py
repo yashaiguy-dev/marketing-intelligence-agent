@@ -4,7 +4,7 @@ Facebook Ads Spy — CLI scraper for Meta Ad Library.
 Outputs Obsidian-ready Markdown with downloaded images, videos, and transcripts.
 
 Usage:
-    python3 fb_ads_spy.py "DenSureFit" [--max-ads 200] [--output-dir ~/obsidian-vault/facebook-ads]
+    python3 fb_ads_spy.py "Nike" [--max-ads 200] [--output-dir ~/obsidian-vault/facebook-ads]
 
 Requirements:
     pip3 install requests patchright

@@ -10,7 +10,7 @@ When the user asks to scrape YouTube ads, find video ads, or get YouTube ads for
 ## 1. Parse the request
 
 Extract from the user's message:
-- **Domain or advertiser** (required) — e.g. "densurefit.com", "nike.com", or a direct Google Ads Transparency URL
+- **Domain or advertiser** (required) — e.g. "nike.com", "apple.com", or a direct Google Ads Transparency URL
 - **Max videos** (optional) — if the user specifies a number, use it; otherwise default to 20
 
 ## 2. Ask before running
@@ -43,4 +43,4 @@ After the script finishes, tell the user:
 - Remind them they can open the folder as an Obsidian vault
 - Each video includes: title, URL, view count, upload date, thumbnail, and transcript
 
-Example: "Found 12 YouTube video ads for densurefit.com. Saved to `~/obsidian-vault/youtube-ads/densurefit-com/densurefit-com.md`. Each video has a thumbnail and collapsible transcript. You can open `~/obsidian-vault/youtube-ads/` as an Obsidian vault to browse them."
+Example: "Found 12 YouTube video ads for nike.com. Saved to `~/obsidian-vault/youtube-ads/nike-com/nike-com.md`. Each video has a thumbnail and collapsible transcript. You can open `~/obsidian-vault/youtube-ads/` as an Obsidian vault to browse them."
